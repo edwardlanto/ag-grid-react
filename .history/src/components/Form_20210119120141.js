@@ -83,7 +83,6 @@ function Form() {
         <Select
           onChange={handleChange}
           defaultValue="all"
-          id="formSelect"
         >
           <MenuItem value='all'>All</MenuItem>
           {categories.map((item, index)=> (

@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
-import Button from '@material-ui/core/Button';
 
 function Grid() {
   // Grid constants
@@ -49,7 +48,7 @@ function Grid() {
     if(rows.length < 1){
       setSelected(false);
     }else{
-      setSelected(true);
+      setSelected(false);
     }
 
   }
@@ -57,9 +56,9 @@ function Grid() {
   return (
     <>
       {selected && (
-        <Button onClick={deleteSelectedRows} id="deleteButton">
+        <button onClick={deleteSelectedRows} id="deleteButton">
           Delete Row
-        </Button>
+        </button>
       )}
       <div className="ag-theme-alpine" style={{ height: 400, width: 900 }}>
         <AgGridReact

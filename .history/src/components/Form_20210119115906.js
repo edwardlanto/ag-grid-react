@@ -73,7 +73,7 @@ function Form() {
               ref={register({ pattern: /^-?\d+\.?\d*$/ })}
               placeholder="Price"
             />
-            {errors.price && <div className="error">Price is needs to be a number</div>}
+            {errors.price && <div className="error">Price is required</div>}
           </Grid>
           <Grid item xs={1}>
             <input type="submit" value="+" />
@@ -83,7 +83,6 @@ function Form() {
         <Select
           onChange={handleChange}
           defaultValue="all"
-          id="formSelect"
         >
           <MenuItem value='all'>All</MenuItem>
           {categories.map((item, index)=> (

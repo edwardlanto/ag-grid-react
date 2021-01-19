@@ -7,11 +7,9 @@ const initialState = {
 
 function removeArray(arr, needle){
   const left = arr.filter( (item, index) => {
-    console.log("INDEX", index);
-    console.log("needle", needle)
     return index !== needle[0]
   })
-  console.log('left', left)
+
   return left;
 }
 
@@ -20,8 +18,6 @@ const { Provider } = store;
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
-    console.log('intiial state data', initialState.data)
-    console.log('orignal', initialState.originalData)
     switch (action.type) {
       case "ADD":
         return {

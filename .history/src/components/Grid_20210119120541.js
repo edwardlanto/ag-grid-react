@@ -59,7 +59,7 @@ function Grid() {
       {selected && (
         <Button onClick={deleteSelectedRows} id="deleteButton">
           Delete Row
-        </Button>
+        </ Button>
       )}
       <div className="ag-theme-alpine" style={{ height: 400, width: 900 }}>
         <AgGridReact
