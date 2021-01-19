@@ -51,7 +51,7 @@ function Form() {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={1}>
-          <Grid item sm={12} md={3}>
+          <Grid item lg={12} md={3}>
             <input
               name="item"
               ref={register({ required: true })}
@@ -59,7 +59,7 @@ function Form() {
             />
             {errors.item && <div className="error">Item is required</div>}
           </Grid>
-          <Grid item sm={12} md={3}>
+          <Grid item xs={3}>
             <input
               name="category"
               ref={register({ required: true })}
@@ -67,7 +67,7 @@ function Form() {
             />
             {errors.category && <div className="error">Category is required</div>}
           </Grid>
-          <Grid item sm={12} md={3}>
+          <Grid item xs={3}>
             <input
               name="price"
               ref={register({ pattern: /^-?\d+\.?\d*$/ })}

@@ -62,7 +62,7 @@ function Grid() {
           Delete Row
         </Button>
       )}
-      <div className="ag-theme-alpine" style={{ height: 400, width: '100%' }}>
+      <div className="ag-theme-alpine" style={{ height: 400, width: 900 }}>
         <AgGridReact
           rowData={globalState?.state.data}
           columnDefs={columnDefs}
