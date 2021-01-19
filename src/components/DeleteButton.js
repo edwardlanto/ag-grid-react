@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 
-class DeleteButton extends Component {
+function DeleteButton(props){
 
-  constructor(props) {
-    super(props);
-    this.btnClickedHandler = this.btnClickedHandler.bind(this);
-  }
-
-  btnClickedHandler() {
-    this.props.clicked(this.props.value);
+  const btnClickedHandler = () => {
+    props.clicked(props.value);
   }
   
-  render() {
-    return <button onClick={this.btnClickedHandler}>Click Me!</button>;
-  }
+  return(
+    <button onClick={btnClickedHandler}>Click Me!</button>
+  )
 }
 
 export default DeleteButton;
