@@ -5,23 +5,12 @@ const initialState = {
   originalData: [],
 };
 
-function removeArray(arr, needle){
-  const left = arr.filter( (item, index) => {
-    console.log("INDEX", index);
-    console.log("needle", needle)
-    return index !== needle[0]
-  })
-  console.log('left', left)
-  return left;
-}
-
 const store = createContext(initialState);
 const { Provider } = store;
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
     console.log('intiial state data', initialState.data)
-    console.log('orignal', initialState.originalData)
     switch (action.type) {
       case "ADD":
         return {
@@ -43,8 +32,14 @@ const StateProvider = ({ children }) => {
       case "DELETE":
         return {
           ...state,
-          data: removeArray([...state.data], action.row),
-          originalData: removeArray([...state.originalData], action.row)
+          data: [...state.data].filter((item, index) => {
+            console.log('index', index, action.rows)
+            return index !== action.rows + 1 
+          }),
+          originalData:  [...state.originalData].filter((item, index) => {
+            console.log('Dindex', index, action.rows)
+            return index !== action.rows + 1
+          })
         };
 
       case "ALL":

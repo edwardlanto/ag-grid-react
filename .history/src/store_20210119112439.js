@@ -9,9 +9,9 @@ function removeArray(arr, needle){
   const left = arr.filter( (item, index) => {
     console.log("INDEX", index);
     console.log("needle", needle)
-    return index !== needle[0]
+    return index !== needle
   })
-  console.log('left', left)
+
   return left;
 }
 

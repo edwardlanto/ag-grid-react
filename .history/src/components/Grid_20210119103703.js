@@ -37,7 +37,7 @@ function Grid() {
 
       dispatch({
         type: "DELETE",
-        row: selectedIndex
+        rows: selectedIndex
       });
 
     }catch(err){
@@ -51,7 +51,7 @@ function Grid() {
       <AgGridReact
         rowData={globalState?.state.data}
         columnDefs={columnDefs}
-        rowSelection="single"
+        rowSelection="multiple"
         onGridReady={params => {
           setGridApi(params.api);
           setColumnApi(params.columnApi);

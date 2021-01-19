@@ -5,16 +5,6 @@ const initialState = {
   originalData: [],
 };
 
-function removeArray(arr, needle){
-  const left = arr.filter( (item, index) => {
-    console.log("INDEX", index);
-    console.log("needle", needle)
-    return index !== needle[0]
-  })
-  console.log('left', left)
-  return left;
-}
-
 const store = createContext(initialState);
 const { Provider } = store;
 
@@ -43,8 +33,8 @@ const StateProvider = ({ children }) => {
       case "DELETE":
         return {
           ...state,
-          data: removeArray([...state.data], action.row),
-          originalData: removeArray([...state.originalData], action.row)
+          data: initialState.data.filter( (item, index) => index  !== action.row),
+          originalData: initialState.originalData.filter( (item, index) => index !== action.row)
         };
 
       case "ALL":

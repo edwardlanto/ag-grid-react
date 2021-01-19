@@ -32,12 +32,14 @@ function Grid() {
 
   function deleteSelectedRows(){
     const selectedNodes = gridApi.getSelectedNodes();
-    let selectedIndex = selectedNodes.map(node => node.rowIndex);
+    let selectedData = selectedNodes.map(node => node.Data);
+
+    console.log(selectedNodes);
     try{
 
       dispatch({
         type: "DELETE",
-        row: selectedIndex
+        rows: selectedNodes 
       });
 
     }catch(err){

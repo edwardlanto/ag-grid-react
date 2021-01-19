@@ -37,7 +37,7 @@ function Grid() {
 
       dispatch({
         type: "DELETE",
-        row: selectedIndex
+        rows: selectedIndex
       });
 
     }catch(err){
