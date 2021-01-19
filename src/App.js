@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import logo from './images/bridgitb-w.svg';
+import Form from './components/Form';
+import Grid from './components/Grid';
 
 const App = () => (
   <>
@@ -9,7 +13,10 @@ const App = () => (
       <div className="app-header-title">Bridgit - Frontend code challenge</div>
     </header>
     <section className="app-content">
-      {/* Add your implementation here */}
+      <Form />
+      <Grid />
+     <div>
+     </div>
     </section>
   </>
 );
