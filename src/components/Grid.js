@@ -1,19 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
-import DeleteButton from '../components/DeleteButton';
 
 function Grid() {
+
+  // Grid constants
   const [gridApi, setGridApi] = useState();
   const [columnApi, setColumnApi] = useState();
-
-  // Row Data From Reducer
-  const globalState = useContext(store);
-
-  const frameworkComponents =  {
-    deleteButton: DeleteButton
-  }
-
   const columnDefs = [
     {
       headerName: "Item",
@@ -33,8 +26,23 @@ function Grid() {
     }
   ];
 
-  function getSelectedRows(){
-    console.log(gridApi.getSelectedNodes())
+  // Store of truth
+  const globalState = useContext(store);
+  const { dispatch } = globalState;
+
+  function deleteSelectedRows(){
+    const selectedNodes = gridApi.getSelectedNodes();
+    let selectedIndex = selectedNodes.map(node => node.rowIndex);
+    try{
+
+      dispatch({
+        type: "DELETE",
+        rows: selectedIndex
+      });
+
+    }catch(err){
+
+    }
   }
 
   return (
@@ -44,14 +52,14 @@ function Grid() {
         rowData={globalState?.state.data}
         columnDefs={columnDefs}
         rowSelection="multiple"
-        frameworkComponents={frameworkComponents}
         onGridReady={params => {
           setGridApi(params.api);
           setColumnApi(params.columnApi);
         }}
+        suppressRowDeselection={true}
       />
     </div>
-    <button onClick={getSelectedRows}>GET SELECTED ROWS</button>
+    <button onClick={deleteSelectedRows}>GET SELECTED ROWS</button>
     </>
   );
 }
