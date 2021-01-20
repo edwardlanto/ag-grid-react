@@ -9,6 +9,9 @@ function Form() {
   // Form constants
   const { register, handleSubmit, errors } = useForm();
   const [categories, setCategories] = useState([]);
+
+  // Error state
+  const [error, setError] = useState(null);
   // Global state of tree
   const globalState = useContext(store);
   const { dispatch } = globalState;
@@ -24,7 +27,7 @@ function Form() {
     setCategories([...categories, data.category]);
       
     } catch (err) {
-      console.log("err", err);
+      setError(err);
     }
   };
 
@@ -43,7 +46,7 @@ function Form() {
         });
       }
     }catch(err){
-      console.log(err);
+      setError(err);
     }
   };
 
@@ -90,6 +93,7 @@ function Form() {
             <MenuItem value={item} key={index}>{item}</MenuItem>
           ))}
         </Select>
+        <span className="error">{error && error}</span>
     </>
   );
 }

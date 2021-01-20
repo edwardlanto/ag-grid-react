@@ -4,6 +4,9 @@ import { store } from "../store.js";
 import Button from '@material-ui/core/Button';
 
 function Grid() {
+
+  // Error
+  const [error, setError] = useState(null);
   // Grid constants
   const [gridApi, setGridApi] = useState();
   const [columnApi, setColumnApi] = useState();
@@ -41,7 +44,7 @@ function Grid() {
       });
       setSelected(false);
     } catch (err) {
-      console.log(err);
+      setError(err)
     }
   }
 
@@ -52,7 +55,6 @@ function Grid() {
     }else{
       setSelected(true);
     }
-
   }
 
   return (
@@ -76,6 +78,7 @@ function Grid() {
           enableSorting={false}
         />
       </div>
+      <span className="error">{error && error}</span>
     </>
   );
 }
