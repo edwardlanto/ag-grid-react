@@ -9,7 +9,6 @@ function Grid() {
   const [error, setError] = useState(null);
   // Grid constants
   const [gridApi, setGridApi] = useState();
-  // eslint-disable-next-line no-unused-vars
   const [columnApi, setColumnApi] = useState();
   const [selected, setSelected] = useState(false);
   const columnDefs = [

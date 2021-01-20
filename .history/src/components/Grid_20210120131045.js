@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
 import Button from '@material-ui/core/Button';
@@ -9,7 +9,6 @@ function Grid() {
   const [error, setError] = useState(null);
   // Grid constants
   const [gridApi, setGridApi] = useState();
-  // eslint-disable-next-line no-unused-vars
   const [columnApi, setColumnApi] = useState();
   const [selected, setSelected] = useState(false);
   const columnDefs = [
