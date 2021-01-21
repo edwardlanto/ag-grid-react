@@ -2,11 +2,18 @@ import React, { createContext, useReducer } from "react";
 
 const initialState = {
   data: [],
-  filter: null,
+  originalData: [],
 };
 
 function compare(arr, needles){
-
+  for(let i = 0; i < arr.length; i++){
+    for(let j = 0; j < needles[i].length; j++){
+      console.log('arr', arr[i], 'needles', needles[j])
+      if(arr[i] === needles[j]){
+        alert('found')
+      }
+    }
+  }
 
   return [{category:'TEST', item:"TEST", price:"TEST"}]
 }
@@ -22,13 +29,16 @@ const StateProvider = ({ children }) => {
           ...state,
 
           // Two states, one for filtered data and keep and original copy for ALL option
-          data: [...state.data, action.row]
+          data: [...state.data, action.row],
+          originalData: [...state.originalData, action.row],
         };
 
       case "FILTER":
         return {
           ...state,
-          filter: action.value
+          data: state.originalData.filter((item) => {
+            return item.category === action.value;
+          }),
         };
 
       case "DELETE":

@@ -2,13 +2,19 @@ import React, { createContext, useReducer } from "react";
 
 const initialState = {
   data: [],
-  filter: null,
+  originalData: [],
 };
 
-function compare(arr, needles){
+function removeArray(arr, needles){
+  let list = arr.map((item, i) => {
+    if(item === needles[i]){
+      console.log('item', item);
+      console.log('needles', needles[i])
+      return item;
+    }
+  });
 
-
-  return [{category:'TEST', item:"TEST", price:"TEST"}]
+  return list;
 }
 
 const store = createContext(initialState);
@@ -22,20 +28,23 @@ const StateProvider = ({ children }) => {
           ...state,
 
           // Two states, one for filtered data and keep and original copy for ALL option
-          data: [...state.data, action.row]
+          data: [...state.data, action.row],
+          originalData: [...state.originalData, action.row],
         };
 
       case "FILTER":
         return {
           ...state,
-          filter: action.value
+          data: state.originalData.filter((item) => {
+            return item.category === action.value;
+          }),
         };
 
       case "DELETE":
         return {
           ...state,
-          data: compare(state.data, action.rows),
-          originalData: compare(state.data, action.rows)
+          data: state.data.filter((item) => !action.rows.includes(item)),
+          originalData: state.data.filter((item) => !action.rows.includes(item))
         };
 
       case "ALL":

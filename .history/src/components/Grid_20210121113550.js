@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
 import Button from '@material-ui/core/Button';
@@ -37,7 +37,7 @@ function Grid() {
 
   function deleteSelectedRows() {
     let selectedNodes = gridApi.getSelectedNodes();
-    selectedNodes = selectedNodes.map((node) => node);
+    selectedNodes = selectedNodes.map((node) => node.rowIndex);
     try {
       dispatch({
         type: "DELETE",
@@ -58,10 +58,6 @@ function Grid() {
       setSelected(true);
     }
   }
-
-  // useEffect(() => {
-
-  // }, )
 
   return (
     <>

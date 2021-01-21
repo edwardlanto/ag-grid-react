@@ -9,6 +9,7 @@ function Grid() {
   const [error, setError] = useState(null);
   // Grid constants
   const [gridApi, setGridApi] = useState();
+  const [rows, setRows] = useState();
   // eslint-disable-next-line no-unused-vars
   const [columnApi, setColumnApi] = useState();
   const [selected, setSelected] = useState(false);
@@ -59,9 +60,9 @@ function Grid() {
     }
   }
 
-  // useEffect(() => {
-
-  // }, )
+  useEffect(() => {
+    setRows(globalState.state.data)
+  }, [globalState.state.data])
 
   return (
     <>

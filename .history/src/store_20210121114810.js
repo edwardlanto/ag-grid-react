@@ -6,7 +6,7 @@ const initialState = {
 };
 
 function compare(arr, needles){
-
+  let data = arr.filter((item, index) => )
 
   return [{category:'TEST', item:"TEST", price:"TEST"}]
 }
@@ -22,7 +22,8 @@ const StateProvider = ({ children }) => {
           ...state,
 
           // Two states, one for filtered data and keep and original copy for ALL option
-          data: [...state.data, action.row]
+          data: [...state.data, action.row],
+          originalData: [...state.originalData, action.row],
         };
 
       case "FILTER":

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
 import Button from '@material-ui/core/Button';
@@ -16,8 +16,7 @@ function Grid() {
     {
       headerName: "Item",
       field: "item",
-      sortable: true,
-      headerCheckboxSelection: true
+      sortable: true
     },
     {
       headerName: "Category",
@@ -36,12 +35,12 @@ function Grid() {
   const { dispatch } = globalState;
 
   function deleteSelectedRows() {
-    let selectedNodes = gridApi.getSelectedNodes();
-    selectedNodes = selectedNodes.map((node) => node);
+    const selectedNodes = gridApi.getSelectedNodes();
+    let selectedIndex = selectedNodes.map((node) => node.rowIndex);
     try {
       dispatch({
         type: "DELETE",
-        rows: selectedNodes
+        row: selectedIndex,
       });
       setSelected(false);
 
@@ -59,10 +58,6 @@ function Grid() {
     }
   }
 
-  // useEffect(() => {
-
-  // }, )
-
   return (
     <>
       {selected && (
@@ -74,7 +69,7 @@ function Grid() {
         <AgGridReact
           rowData={globalState?.state.data}
           columnDefs={columnDefs}
-          rowSelection="multiple"
+          rowSelection="single"
           onGridReady={(params) => {
             setGridApi(params.api);
             setColumnApi(params.columnApi);

@@ -9,6 +9,7 @@ function Grid() {
   const [error, setError] = useState(null);
   // Grid constants
   const [gridApi, setGridApi] = useState();
+  const [rows, setRows] = useState();
   // eslint-disable-next-line no-unused-vars
   const [columnApi, setColumnApi] = useState();
   const [selected, setSelected] = useState(false);
@@ -59,9 +60,9 @@ function Grid() {
     }
   }
 
-  // useEffect(() => {
-
-  // }, )
+  useEffect(() => {
+    setRows(globalState.state.data)
+  }, [globalState.state.data])
 
   return (
     <>
@@ -72,7 +73,7 @@ function Grid() {
       )}
       <div className="ag-theme-alpine" style={{ height: 400, width: '100%' }}>
         <AgGridReact
-          rowData={globalState?.state.data}
+          rowData={rows}
           columnDefs={columnDefs}
           rowSelection="multiple"
           onGridReady={(params) => {

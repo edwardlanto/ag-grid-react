@@ -37,7 +37,8 @@ function Grid() {
 
   function deleteSelectedRows() {
     let selectedNodes = gridApi.getSelectedNodes();
-    selectedNodes = selectedNodes.map((node) => node);
+    selectedNodes = selectedNodes.map((node) => node.rowIndex);
+
     try {
       dispatch({
         type: "DELETE",
@@ -59,9 +60,9 @@ function Grid() {
     }
   }
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // }, )
+  })
 
   return (
     <>

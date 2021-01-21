@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
 import Button from '@material-ui/core/Button';
@@ -58,10 +58,6 @@ function Grid() {
       setSelected(true);
     }
   }
-
-  // useEffect(() => {
-
-  // }, )
 
   return (
     <>
