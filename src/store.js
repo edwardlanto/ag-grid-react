@@ -31,7 +31,7 @@ const StateProvider = ({ children }) => {
       case "FILTER":
         return {
           ...state,
-          data: state.data.filter((item) => {
+          data: state.originalData.filter((item) => {
             return item.category === action.value;
           }),
         };

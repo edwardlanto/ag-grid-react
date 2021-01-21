@@ -44,6 +44,7 @@ function Grid() {
         row: selectedIndex,
       });
       setSelected(false);
+
     } catch (err) {
       setError(err)
     }
