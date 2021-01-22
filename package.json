@@ -1,8 +1,12 @@
 {
   "name": "frontend-code-challenge",
-  "jest":{
-    "snapshotSerializers": ["enzyme-to-json/serializer"],
-    "setupFiles": ["./src/setupTests.js"]
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "./src/setupTests.js"
+    ]
   },
   "version": "1.0.0",
   "private": true,

@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-import { Select } from "@material-ui/core/";
 import { useForm } from "react-hook-form";
 import { store } from "../store";
-import MenuItem from "@material-ui/core/MenuItem";
 
 function Form() {
   // Form constants
@@ -25,28 +23,6 @@ function Form() {
     }
   };
 
-  // Select Form
-
-  const handleChange = (e) => {
-    try {
-      if (e.target.value === "all") {
-        dispatch({
-          type: "ALL",
-        });
-      } else {
-        dispatch({
-          type: "FILTER",
-          value: e.target.value,
-        });
-      }
-    } catch (err) {
-      setError(err);
-    }
-  };
-
-  // Created a categories set for no duplicates
-  const categories = globalState.state.originalData.map((item) => item.category);
-  let categoriesSet = Array.from(new Set(categories));
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -84,14 +60,6 @@ function Form() {
           </Grid>
         </Grid>
       </form>
-      <Select onChange={handleChange} defaultValue="all" id="formSelect">
-        <MenuItem value="all">All</MenuItem>
-        {categoriesSet.map((item, index) => (
-          <MenuItem value={item} key={index}>
-            {item}
-          </MenuItem>
-        ))}
-      </Select>
       <span className="error">{error && error}</span>
     </>
   );

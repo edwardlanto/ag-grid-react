@@ -2,13 +2,15 @@ import React, { createContext, useReducer } from "react";
 
 const initialState = {
   data: [],
-  filter: null,
+  deletedNodes: []
 };
 
-function compare(arr, needles){
+function compare(state, needle){
+  console.log('needle', needle);
+  let arr = 
 
-
-  return [{category:'TEST', item:"TEST", price:"TEST"}]
+  console.log(arr);
+  return arr;
 }
 
 const store = createContext(initialState);
@@ -16,6 +18,7 @@ const { Provider } = store;
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
+    console.log('action', action)
     switch (action.type) {
       case "ADD":
         return {
@@ -25,24 +28,13 @@ const StateProvider = ({ children }) => {
           data: [...state.data, action.row]
         };
 
-      case "FILTER":
-        return {
-          ...state,
-          filter: action.value
-        };
-
       case "DELETE":
-        return {
+         return{
           ...state,
-          data: compare(state.data, action.rows),
-          originalData: compare(state.data, action.rows)
-        };
 
-      case "ALL":
-        return {
-          ...state,
-          data: [...state.originalData],
-        };
+          // Two states, one for filtered data and keep and original copy for ALL option
+          data: [...state.data, action.data]
+         }
 
       default:
         return state;
