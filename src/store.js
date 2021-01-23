@@ -5,26 +5,15 @@ const initialState = {
   deletedNodes: []
 };
 
-function compare(state, needle){
-  console.log('needle', needle);
-  let arr = 
-
-  console.log(arr);
-  return arr;
-}
-
 const store = createContext(initialState);
 const { Provider } = store;
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
-    console.log('action', action)
     switch (action.type) {
       case "ADD":
         return {
           ...state,
-
-          // Two states, one for filtered data and keep and original copy for ALL option
           data: [...state.data, action.row]
         };
 
@@ -33,7 +22,9 @@ const StateProvider = ({ children }) => {
           ...state,
 
           // Two states, one for filtered data and keep and original copy for ALL option
-          data: [...state.data, action.data]
+          data: state.data.filter(element => {
+            return  element !== action.data
+          })
          }
 
       default:

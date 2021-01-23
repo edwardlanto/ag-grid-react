@@ -1,9 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useForm } from "react-hook-form";
 import { store } from "../store";
 
 function Form() {
+  const [count, setCount] = useState(0);
+  const latestValue = useRef(count);
   // Form constants
   const { register, handleSubmit, errors } = useForm();
   // Error state
@@ -12,7 +14,16 @@ function Form() {
   const globalState = useContext(store);
 
   const { dispatch } = globalState;
+
   const onSubmit = (data) => {
+
+
+    setCount((prev) => {
+      latestValue.current = prev + 1;
+      return latestValue.current;
+    });
+    
+    data.deleteId = count;
     try {
       dispatch({
         type: "ADD",
