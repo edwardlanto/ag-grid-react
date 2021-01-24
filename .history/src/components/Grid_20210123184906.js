@@ -15,15 +15,20 @@ function Grid() {
     {
       headerName: "Item",
       field: "item",
+      sortable: true,
       headerCheckboxSelection: true,
+      filter: true,
     },
     {
       headerName: "Category",
-      field: "category"
+      field: "category",
+      sortable: true,
+      filter: true,
     },
     {
       headerName: "price",
-      field: "price"
+      field: "price",
+      sortable: true,
     },
   ];
 
@@ -33,6 +38,7 @@ function Grid() {
 
   function deleteSelectedRows() {
     let selectedNodes = gridApi.getSelectedNodes();
+    let arr = [];
     selectedNodes = selectedNodes.map((node) => node.data);
     try {
       for (let j = 0; j < selectedNodes.length; j++) {
@@ -64,8 +70,7 @@ function Grid() {
 
   const defaultColDef = {
     flex: 1,
-    minWidth: 150,
-    sortable: true
+    minWidth: 150
   };
 
   return (

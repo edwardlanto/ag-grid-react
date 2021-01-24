@@ -31,7 +31,3 @@
   margin: 20px 0;
 }
 
-/* Override AG Grid CSS  */
-.ag-header-cell-menu-button:not(.ag-header-menu-always-show){
-  opacity:1 !important;
-}

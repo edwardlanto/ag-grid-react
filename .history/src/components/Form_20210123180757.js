@@ -18,13 +18,13 @@ function Form() {
   const { dispatch } = globalState;
 
   const onSubmit = (data) => {
+    console.log('data', data);
 
     setCount((prev) => {
       latestValue.current = prev + 1;
       return latestValue.current;
     });
     
-    // Added deleteId to differentiate rows with same data
     data.deleteId = count;
     try {
       dispatch({
