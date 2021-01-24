@@ -70,7 +70,7 @@ function Form() {
             )}
           </Grid>
           <Grid item xs={1}>
-            <Button variant="contained" color="primary" type="submit">+</Button>
+            <input type="submit" value="+" />
           </Grid>
         </Grid>
       </form>

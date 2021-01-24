@@ -3,6 +3,7 @@ import React, { useState, useContext} from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from '@material-ui/core/styles'
 
 function Grid() {
   // Error
@@ -71,7 +72,7 @@ function Grid() {
 
   return (
     <>
-      <Button onClick={deleteSelectedRows} variant="contained" color="primary" disabled={!selected}>
+      <Button onClick={deleteSelectedRows} color="secondary" disabled={!selected}>
         Delete Row
       </Button>
       <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>

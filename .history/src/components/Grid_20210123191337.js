@@ -71,7 +71,7 @@ function Grid() {
 
   return (
     <>
-      <Button onClick={deleteSelectedRows} variant="contained" color="primary" disabled={!selected}>
+      <Button onClick={deleteSelectedRows} variant="contained" color="secondary" disabled={!selected}>
         Delete Row
       </Button>
       <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>

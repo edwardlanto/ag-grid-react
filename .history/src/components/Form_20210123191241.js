@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { store } from "../store";
 import { Input } from '@material-ui/core';
 import SelectComponent  from './SelectComponent';
-import Button from "@material-ui/core/Button";
+import { Input } from "@material-ui/core/";
 
 function Form() {
   const [count, setCount] = useState(0);
@@ -70,7 +70,7 @@ function Form() {
             )}
           </Grid>
           <Grid item xs={1}>
-            <Button variant="contained" color="primary" type="submit">+</Button>
+            <Input type="submit" value="+" />
           </Grid>
         </Grid>
       </form>

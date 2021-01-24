@@ -3,8 +3,18 @@ import React, { useState, useContext} from "react";
 import { AgGridReact } from "ag-grid-react";
 import { store } from "../store.js";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 function Grid() {
+  const classes = useStyles();
   // Error
   const [error, setError] = useState(null);
   // Grid constants
@@ -70,8 +80,8 @@ function Grid() {
   };
 
   return (
-    <>
-      <Button onClick={deleteSelectedRows} variant="contained" color="primary" disabled={!selected}>
+    <div className={classes.root}>
+      <Button onClick={deleteSelectedRows} color="secondary" disabled={!selected}>
         Delete Row
       </Button>
       <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
@@ -87,7 +97,7 @@ function Grid() {
         />
       </div>
       <span className="error">{error && error}</span>
-    </>
+    </div>
   );
 }
 
