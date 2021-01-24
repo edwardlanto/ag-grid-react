@@ -51,6 +51,7 @@ function Grid() {
 
   function rowSelectionCallback() {
     const rows = gridApi.getSelectedRows();
+    
     if (rows.length < 1) {
       setSelected(false);
     } else {

@@ -69,7 +69,7 @@ function Form() {
               <div className="error">Price is needs to be a number</div>
             )}
           </Grid>
-          <Grid item xs={1}>
+          <Grid item md={3} xs={12}>
             <Button variant="contained" color="primary" type="submit">+</Button>
           </Grid>
         </Grid>
