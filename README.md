@@ -1,85 +1,53 @@
-# Bridgit Frontend Code Challenge
+LINK - [Vercel Bridgit Challenge](https://bridgit-challenge.vercel.app/)
 
-*You will need a Github account to complete & submit this challenge*
+## Assumptions you made during the implementation process.
 
-## Repository Setup
-While you may choose to fork this repository, we recommend the following process to create your own repository that isn't obviously linked.
+#### What stack am I going to use ? 
 
-### Private Repo Setup
-1. Create a new private Github repository for this challenge. Ex: bridgit-challenge
-2. Create a shallow clone of this repository on your machine
+* Ag Grid
+* React
+* Material UI
+* React Hook Form
+* Yarn
 
-```
-git clone  https://github.com/Bridgit/frontend-code-challenge.git --branch main --single-branch bridgit-challenge
-```
+I looked at the question and I had a feeling I needed to pass state to other components, but instead of using Redux I went with something built in React Context API, saving space on dependancies. I know the concepts are practically the same so I went with that instead, though I could've set it up if needed. I am used to React Hook Form, the second I saw a form I went with that because its light & has amazing validation. I also have experience tabularizing data and I know AG Grid does wonders and is very robust. It has built in sorting, built in Grid API to select nodes & Overflow X scroll.
 
-3. Change the remote to your new repository
-```
-cd bridgit-challenge
-git remote set-url origin https://github.com/YOUR_GITHUB_ACCOUNT/YOUR_REPO.git
-```
-4. Push the code to your private repo
+#### What is going to be a component?
 
-```
-git push -u origin main
-```
+A component should be self contained and independant of eachother. I built this project thinking of scale, meaning the form can be reusable for other pages to interact with other future grids. As for the Grid, I'd like to say its mainly a functional piece — it just needs the data so I made it reusable as well.
 
-5. You're now ready to develop with your private repository. 🎉
+#### What are some real life examples that would be needed that arent in the challenge?
+
+If I were to place this in the real world situation, I would always want my forms required & show meaningful errors where ever needed. I also thought about user experience and I wanted the "Delete" button to only show if there were rows selected, because row data I feel like is suppposed to have data or a button that does more than delete.
 
 
-## Running the app
-1. Install the required dependencies.
+## What you liked or didn't like.
 
-```
-yarn
+I liked all of it, tested core fundamentals of programming. I enjoyed putting real world thinking into this. A feature I'm proud of was I don't repeat the categories in the Select Dropdown.
+
+``` 
+  const categories = globalState?.state.originalData.map((item) => item.category);
+  let categoriesSet = Array.from(new Set(categories));
 ```
 
-2. Run the application.
+Another feature I enjoyed building was AG grid, because it was shorter and easier to understand than Material UI's Data Grid.
 
-```
-yarn start
-```
+``
+    <AgGridReact
+          rowData={globalState?.state.data}
+          columnDefs={columnDefs}
+          rowSelection="single"
+          onGridReady={(params) => {
+            setGridApi(params.api);
+            setColumnApi(params.columnApi);
+          }}
+          onRowSelected={rowSelectionCallback}
+          suppressHorizontalScroll={false}
+          enableSorting={false}
+        />
+``
 
-## The Challenge
 
-Implement a react application that allows users to manage a list of categorized items. The application should have the following features:
+#### Start Project
 
-1. Allow users to create item entries by providing an item name, a category to which the item belongs and a price. Make sure to validate that the value provided for the price is an actual dollar value.
-2. Allow users to view the items in a list.
-3. Allow users to remove items from the list.
-3. Allow users to filter the list of items displayed by category.
-4. Allow users to sort the list of items by name, category and price.
 
-These requirements are in order of priority. We want to respect your time and we believe the challenge should not take more than four hours to complete. If you have something you feel demonstrates your abilities, but doesn't hit every requirement on the list, please do submit what you have.
-
-## Available tools
-
-We've added `react-redux`, `Redux Devtools` and `Material UI` as part of this template for you to use. Feel free to use them if they make things easier for you.
-
-## Example
-
-This example is just one way in which the application could be implemented. Feel free to use this as the base for your implementation or use your creativity to come up with your own approach.
-
-![Example](code-challenge.png)
-
-### Filter by category
-
-![Example](code-challenge-filtered.png)
-
-# Notes
-
-At the top level of the directory structure you can find a file named `NOTES.md`. Please feel free to add there any notes related to the implementation of your code. Some things that we would be interested in are:
-
-* Assumptions you made during the implementation process.
-* Known limitations of your implementation.
-* What you liked or didn't like.
-* The challenges you encountered.
-* Anything else you'd like to add.
-
-# Deliverables & Submitting Your Results
-
-Please do one of the following:
-1. Grant access to your private repository to the Github account indicated.
-2. Make your repository public and provide the URL.
-
-Don't forget to include your notes!

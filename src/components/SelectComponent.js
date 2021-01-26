@@ -9,7 +9,7 @@ function SelectComponent() {
   const { dispatch } = globalState;
 
   // Created a categories set for no duplicates
-  const categories = globalState?.state?.originalData.map((item) => item.category);
+  const categories = globalState?.state.originalData.map((item) => item.category);
   let categoriesSet = Array.from(new Set(categories));
 
   const handleChange = (event) => {
