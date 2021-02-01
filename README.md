@@ -1,4 +1,4 @@
-LINK - [Vercel Bridgit Challenge](https://bridgit-challenge.vercel.app/)
+LINK - [AG GRID](https://ag-grid-react.vercel.app/)
 
 ## Assumptions you made during the implementation process.
 
@@ -46,8 +46,5 @@ Another feature I enjoyed building was AG grid, because it was shorter and easie
           enableSorting={false}
         />
 ``
-
-
-#### Start Project
 
 
